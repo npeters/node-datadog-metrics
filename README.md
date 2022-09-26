@@ -88,7 +88,7 @@ If you need even more control you can create one or more `BufferedMetricsLogger`
 ```js
 var metrics = require('datadog-metrics');
 var metricsLogger = new metrics.BufferedMetricsLogger({
-    apiHost: 'datadoghq.eu',
+    site: 'datadoghq.eu',
     apiKey: 'TESTKEY',
     host: 'myhost',
     prefix: 'myapp.',
@@ -117,8 +117,7 @@ Where `options` is an object and can contain the following:
 * `flushIntervalSeconds`: How often to send metrics to Datadog. (optional)
     * This defaults to 15 seconds. Set it to 0 to disable auto-flushing which
       means you must call `flush()` manually.
-* `apiHost`: Sets the Datadog API host (also called "site" in Datadog docs).
-    (optional)
+* `site`: Sets the Datadog "site", or server where metrics are sent. (optional)
     * Defaults to `datadoghq.com`.
     * See more details on setting your site at:
         https://docs.datadoghq.com/getting_started/site/#access-the-datadog-site
@@ -276,6 +275,8 @@ npm test
 ## Release History
 
 * (In development)
+    * DEPRECATED: The `apiHost` option has been renamed to `site` so that it matches up with Datadog docs and official packages. The old `apiHost` name still works for now, but will be removed in the future.
+
     * Support distribution metrics. You can now send distributions to Datadog by doing:
 
         ```js
